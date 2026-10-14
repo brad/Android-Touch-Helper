@@ -61,7 +61,7 @@ public class ManagePackageWidgetsDialogFragment extends DialogFragment {
                     ClipData clip = ClipData.newPlainText("Rules: Widget in Packages", editRules.getText().toString());
                     clipboard.setPrimaryClip(clip);
 
-                    Utilities.toast("规则已复制到剪贴板!");
+                    Utilities.toast(getString(R.string.toast_rules_copied));
                 }
             });
         }
@@ -77,9 +77,9 @@ public class ManagePackageWidgetsDialogFragment extends DialogFragment {
                     if(clipData != null && clipData.getItemCount() > 0) {
                         String pasteData = clipData.getItemAt(0).getText().toString();
                         editRules.setText(pasteData);
-                        Utilities.toast("已从剪贴板获取规则!");
+                        Utilities.toast(getString(R.string.toast_rules_pasted));
                     } else {
-                        Utilities.toast("未从剪贴板发现规则!");
+                        Utilities.toast(getString(R.string.toast_rules_not_found));
                     }
                 }
             });
@@ -91,7 +91,7 @@ public class ManagePackageWidgetsDialogFragment extends DialogFragment {
             btCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Utilities.toast("修改已取消");
+                    Utilities.toast(getString(R.string.toast_edit_cancelled));
                     getDialog().dismiss();
                 }
             });
@@ -117,10 +117,10 @@ public class ManagePackageWidgetsDialogFragment extends DialogFragment {
                 public void onClick(View view) {
                     boolean result = setting.setPackageWidgetsInString(editRules.getText().toString());
                     if(result) {
-                        Utilities.toast("规则已保存!");
+                        Utilities.toast(getString(R.string.toast_rules_saved));
                         getDialog().dismiss();
                     } else {
-                        Utilities.toast("规则有误，请修改后再次保存!");
+                        Utilities.toast(getString(R.string.toast_rules_invalid));
                     }
                 }
             });
