@@ -29,11 +29,83 @@
     <string name="about_privacy_policy">隐私政策：\nhttps://touchhelper.zfdang.com/privacy.html</string>
     <string name="about_copyright">Copyright © 2022 Zhengfa Dang</string>
 
-    <string name="app_version">版本: %s (%d)</string>
+    <string name="app_version">版本: %1$s (%2$d)</string>
     <string name="accessibility_disclosure_title">开启无障碍服务前请了解</string>
     <string name="accessibility_disclosure_message">\"开屏跳过\"通过安卓无障碍服务读取当前屏幕上的界面内容（控件文字、描述和位置），用于识别并自动点击开屏广告的\"跳过\"按钮。\n\n· 自动识别时，这些内容只在本机内存中即时比对，不保存。\n· 当您使用\"添加程序的跳过方法\"时，您所选控件的文字、描述和坐标会作为规则保存在本机的应用数据中，可在设置中查看或删除。\n· 当您使用\"复制窗口控件\"时，当前窗口的控件信息会按您的操作复制到系统剪贴板。\n\n本程序不申请网络权限，不会收集或上传任何数据。同意后即可开启无障碍服务；未同意前服务不会读取任何界面内容。</string>
     <string name="accessibility_disclosure_agree">同意并前往设置</string>
     <string name="accessibility_disclosure_agree_only">同意</string>
     <string name="accessibility_disclosure_reminder">开屏跳过：请打开应用并确认无障碍服务说明后，跳过功能才会开始工作</string>
     <string name="accessibility_disclosure_cancel">取消</string>
+
+    <!-- Settings screen (touch_helper_preference.xml) -->
+    <string name="pref_category_basic">基本设置</string>
+    <string name="pref_notify_title">跳过广告时显示通知</string>
+    <string name="pref_notify_summary_on">显示跳过通知</string>
+    <string name="pref_notify_summary_off">不显示通知</string>
+    <string name="pref_duration_title">检测时长 (推荐值:4秒)</string>
+    <string name="pref_duration_summary">目标应用启动后，在此时间内检测广告，之后不再检测。如果时间过短，广告可能未加载完，导致无法跳过</string>
+    <string name="pref_category_skip">广告跳过设置</string>
+    <string name="pref_keywords_title">跳过广告按钮的关键字</string>
+    <string name="pref_keywords_dialog_title">设置跳过广告按钮的关键字\n多个关键字请以空格分隔</string>
+    <string name="pref_whitelist_title">应用程序白名单</string>
+    <string name="pref_whitelist_summary">设置不跳过广告的程序</string>
+    <string name="pref_category_advanced">高级设置</string>
+    <string name="pref_add_method_title">添加程序的跳过方法</string>
+    <string name="pref_add_method_summary">手动添加程序的跳过按钮或者跳过区域</string>
+    <string name="pref_manage_widgets_title">管理已添加按钮的程序</string>
+    <string name="pref_manage_widgets_summary">保留或者删除已添加跳过按钮的程序</string>
+    <string name="pref_manage_dialog_title">勾选要保留的程序</string>
+    <string name="pref_import_export_title">导入/导出程序按钮跳过的规则</string>
+    <string name="pref_import_export_summary">手动编辑规则</string>
+    <string name="pref_manage_positions_title">管理已添加区域的程序</string>
+    <string name="pref_manage_positions_summary">保留或者删除已添加跳过区域的程序</string>
+    <string name="pref_advanced_help_title">高级设置说明</string>
+    <string name="pref_advanced_help_summary">点击查看使用说明</string>
+
+    <!-- In-app customization overlay (layout_activity_customization.xml, TouchHelperServiceImpl) -->
+    <string name="custom_package_label">包名：</string>
+    <string name="custom_package_hint">显示当前应用的包名</string>
+    <string name="custom_activity_label">活动：</string>
+    <string name="custom_activity_hint">显示当前页面的活动名</string>
+    <string name="custom_widget_label">控件：</string>
+    <string name="custom_widget_hint">显示控件信息</string>
+    <string name="custom_position_label">坐标：</string>
+    <string name="custom_position_hint">显示坐标信息</string>
+    <string name="custom_show_layout">显示布局</string>
+    <string name="custom_hide_layout">隐藏布局</string>
+    <string name="custom_add_widget">添加控件</string>
+    <string name="custom_show_target">显示准心</string>
+    <string name="custom_hide_target">隐藏准心</string>
+    <string name="custom_add_position">添加坐标</string>
+    <string name="custom_dump_screen">检查窗口</string>
+    <string name="custom_quit">退出</string>
+    <string name="custom_position_info">X轴：%1$d    Y轴：%2$d    (其他参数默认)</string>
+    <string name="custom_widget_saved_suffix">" (以下控件数据已保存)"</string>
+    <string name="custom_position_saved_suffix">" (以下坐标数据已保存)"</string>
+
+    <!-- Rule editor dialog (layout_manage_package_widgets.xml) -->
+    <string name="manage_rules_caption">编辑程序按钮跳过的规则：</string>
+    <string name="manage_reset">重置规则</string>
+    <string name="manage_copy">复制规则</string>
+    <string name="manage_paste">粘贴规则</string>
+    <string name="manage_cancel">取消修改</string>
+    <string name="manage_online_rules">在线规则</string>
+    <string name="manage_confirm">确认修改</string>
+
+    <!-- Package picker dialog (layout_select_packages.xml) -->
+    <string name="select_cancel">取消</string>
+    <string name="select_confirm">确认</string>
+
+    <!-- Toasts -->
+    <string name="toast_skipping_by_position">正在根据位置跳过广告...</string>
+    <string name="toast_skipping_by_keyword">正在根据关键字跳过广告...</string>
+    <string name="toast_skipping_by_widget">正在根据控件跳过广告...</string>
+    <string name="toast_window_copied">窗口控件已复制到剪贴板！</string>
+    <string name="toast_rules_copied">规则已复制到剪贴板!</string>
+    <string name="toast_rules_pasted">已从剪贴板获取规则!</string>
+    <string name="toast_rules_not_found">未从剪贴板发现规则!</string>
+    <string name="toast_edit_cancelled">修改已取消</string>
+    <string name="toast_rules_saved">规则已保存!</string>
+    <string name="toast_rules_invalid">规则有误，请修改后再次保存!</string>
+    <string name="toast_service_not_running">开屏跳过服务未运行，请打开无障碍服务!</string>
 </resources>
