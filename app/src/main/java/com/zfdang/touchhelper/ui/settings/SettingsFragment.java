@@ -338,7 +338,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     if(!TouchHelperService.dispatchAction(TouchHelperService.ACTION_ACTIVITY_CUSTOMIZATION)) {
-                        Toast.makeText(getContext(),"开屏跳过服务未运行，请打开无障碍服务!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), R.string.toast_service_not_running, Toast.LENGTH_SHORT).show();
                     }
                     return true;
                 }
