@@ -29,7 +29,10 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        resourceConfigurations = ['zh-rCN']
+        // Keep every locale the app ships strings for. Without 'en' here the
+        // build strips values-en/ from the APK, so English devices would
+        // silently fall back to the (Chinese) default strings.
+        resourceConfigurations = ['en', 'zh-rCN']
     }
 
     signingConfigs {

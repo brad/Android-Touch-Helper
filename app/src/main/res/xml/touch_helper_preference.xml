@@ -2,77 +2,77 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="基本设置">
+    <PreferenceCategory app:title="@string/pref_category_basic">
 
         <CheckBoxPreference
             app:icon="@drawable/ic_notification"
             app:key="skip_ad_notification"
-            app:summaryOff="不显示通知"
-            app:summaryOn="显示跳过通知"
-            app:title="跳过广告时显示通知" />
+            app:summaryOff="@string/pref_notify_summary_off"
+            app:summaryOn="@string/pref_notify_summary_on"
+            app:title="@string/pref_notify_title" />
 
         <SeekBarPreference
             app:key="skip_ad_duration"
             app:icon="@drawable/ic_duration"
-            app:title="检测时长 (推荐值:4秒)"
-            app:summary="目标应用启动后，在此时间内检测广告，之后不再检测。如果时间过短，广告可能未加载完，导致无法跳过"
+            app:title="@string/pref_duration_title"
+            app:summary="@string/pref_duration_summary"
             app:showSeekBarValue="true" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="广告跳过设置">
+    <PreferenceCategory app:title="@string/pref_category_skip">
 
         <EditTextPreference
             app:key="setting_key_words"
-            app:title="跳过广告按钮的关键字"
+            app:title="@string/pref_keywords_title"
             app:icon="@drawable/ic_keyword"
             app:useSimpleSummaryProvider="true"
-            app:dialogTitle="设置跳过广告按钮的关键字\n多个关键字请以空格分隔"/>
+            app:dialogTitle="@string/pref_keywords_dialog_title"/>
 
         <Preference
             app:key="setting_whitelist"
             app:icon="@drawable/ic_happy"
-            app:summary="设置不跳过广告的程序"
-            app:title="应用程序白名单" />
+            app:summary="@string/pref_whitelist_summary"
+            app:title="@string/pref_whitelist_title" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="高级设置">
+    <PreferenceCategory app:title="@string/pref_category_advanced">
 
         <Preference
             app:key="setting_activity_customization"
             app:icon="@drawable/ic_target"
-            app:summary="手动添加程序的跳过按钮或者跳过区域"
-            app:title="添加程序的跳过方法" />
+            app:summary="@string/pref_add_method_summary"
+            app:title="@string/pref_add_method_title" />
 
         <MultiSelectListPreference
             app:key="setting_activity_widgets"
             app:icon="@drawable/ic_activity_widget"
-            app:title="管理已添加按钮的程序"
-            app:summary="保留或者删除已添加跳过按钮的程序"
+            app:title="@string/pref_manage_widgets_title"
+            app:summary="@string/pref_manage_widgets_summary"
             app:entries="@array/empty_entries"
             app:entryValues="@array/empty_entries"
-            app:dialogTitle="勾选要保留的程序"/>
+            app:dialogTitle="@string/pref_manage_dialog_title"/>
 
         <Preference
             app:key="setting_activity_widgets_advanced"
             app:icon="@drawable/ic_widgets_edit"
-            app:summary="手动编辑规则"
-            app:title="导入/导出程序按钮跳过的规则" />
+            app:summary="@string/pref_import_export_summary"
+            app:title="@string/pref_import_export_title" />
 
         <MultiSelectListPreference
             app:key="setting_activity_positions"
             app:icon="@drawable/ic_activity_position"
-            app:title="管理已添加区域的程序"
-            app:summary="保留或者删除已添加跳过区域的程序"
+            app:title="@string/pref_manage_positions_title"
+            app:summary="@string/pref_manage_positions_summary"
             app:entries="@array/empty_entries"
             app:entryValues="@array/empty_entries"
-            app:dialogTitle="勾选要保留的程序"/>
+            app:dialogTitle="@string/pref_manage_dialog_title"/>
 
         <Preference
-            app:summary="点击查看使用说明"
+            app:summary="@string/pref_advanced_help_summary"
             app:icon="@drawable/ic_manual"
-            app:title="高级设置说明">
+            app:title="@string/pref_advanced_help_title">
 
             <intent
                 android:action="android.intent.action.VIEW"

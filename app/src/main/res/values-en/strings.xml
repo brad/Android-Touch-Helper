@@ -1,0 +1,111 @@
+<resources>
+    <string name="app_name">AdSkip</string>
+    <string name="title_home">Status</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_about">About</string>
+    <string name="status_title">Service Status</string>
+    <string name="text_instructions">\"AdSkip\" uses Android\'s Accessibility Service to automatically skip ads. It is open source, needs no network, and is completely safe! To make sure it works properly, please check the following settings:</string>
+    <string name="text_accessibility_permission">1. In \"Accessibility\" settings, turn on \"AdSkip - Accessibility Service\".</string>
+    <string name="text_power_permission">2. In \"Battery optimization\" settings, set \"AdSkip\" to \"Not optimized\".</string>
+    <string name="text_rom_battery">3. In battery management, set \"AdSkip\" to \"Allow background power usage\". The steps vary by brand. For example, on VIVO: \"Settings\" -> \"Battery\" -> \"Background power usage management\".</string>
+    <string name="text_task_manager">4. In \"Task manager\", lock \"AdSkip\".</string>
+    <string name="text_status_help">For more information, visit:</string>
+    <string name="text_status_weblink">https://touchhelper.zfdang.com/enable</string>
+
+    <string name="button_setting">Settings</string>
+    <string name="touch_helper_service_label">AdSkip - Accessibility Service</string>
+    <string name="touch_helper_service_description">\"AdSkip\" uses Android\'s Accessibility Service to automatically skip ads. Please turn on this service so it can work properly.\n\nThis app is open source, needs no network permission, and does not collect or upload any personal information. You can use it with confidence!</string>
+    <string name="about_app_introduction">
+        \"AdSkip\" can help you automatically skip splash ads in some apps, using Android\'s Accessibility Service.
+        \n\nIt can skip splash ads in three ways:
+        \n\n1. Keywords. It looks for buttons containing keywords in an app and automatically clicks them to skip the ad;
+        \n2. Specific controls. When an app is running, it automatically finds the matching control and clicks it;
+        \n3. Specific positions. When an app is running, it automatically taps the matching area.
+        \n\nYou can configure all three methods in \"Settings\".
+        \n\nFor details, visit:
+    </string>
+
+    <string name="about_weblink">https://touchhelper.zfdang.com/</string>
+    <string name="about_privacy_policy">Privacy Policy:\nhttps://touchhelper.zfdang.com/privacy.html</string>
+    <string name="about_copyright">Copyright © 2022 Zhengfa Dang</string>
+
+    <string name="app_version">Version: %1$s (%2$d)</string>
+    <string name="accessibility_disclosure_title">Please read before turning on the Accessibility Service</string>
+    <string name="accessibility_disclosure_message">\"AdSkip\" reads the current screen\'s UI content (control text, descriptions, and positions) through Android\'s Accessibility Service to identify and automatically tap the \"Skip\" button on splash ads.\n\n· During automatic detection, this content is only compared in memory on your device and is not saved.\n· When you use \"Add a skip method for an app\", the text, description, and coordinates of the controls you select are saved as rules in this app\'s data on your device, where you can view or delete them in Settings.\n· When you use \"Copy window widgets\", the current window\'s widget info is copied to the system clipboard when you tap.\n\nThis app does not request network permission and does not collect or upload any data. Once you agree, the Accessibility Service can be turned on; before you agree, the service will not read any screen content.</string>
+    <string name="accessibility_disclosure_agree">Agree and go to Settings</string>
+    <string name="accessibility_disclosure_agree_only">Agree</string>
+    <string name="accessibility_disclosure_reminder">AdSkip: please open the app and confirm the Accessibility Service notice before skip functionality starts working</string>
+    <string name="accessibility_disclosure_cancel">Cancel</string>
+
+    <!-- Settings screen (touch_helper_preference.xml) -->
+    <string name="pref_category_basic">Basic Settings</string>
+    <string name="pref_notify_title">Show a notification when skipping an ad</string>
+    <string name="pref_notify_summary_on">Show skip notification</string>
+    <string name="pref_notify_summary_off">Don\'t show notifications</string>
+    <string name="pref_duration_title">Detection duration (recommended: 4s)</string>
+    <string name="pref_duration_summary">After the target app launches, ads are detected for this long, then detection stops. If it is too short, the ad may not have finished loading and cannot be skipped</string>
+    <string name="pref_category_skip">Ad skipping</string>
+    <string name="pref_keywords_title">Skip-ad button keywords</string>
+    <string name="pref_keywords_dialog_title">Set the keywords for skip-ad buttons\nSeparate multiple keywords with spaces</string>
+    <string name="pref_whitelist_title">App whitelist</string>
+    <string name="pref_whitelist_summary">Choose apps whose ads should not be skipped</string>
+    <string name="pref_category_advanced">Advanced settings</string>
+    <string name="pref_add_method_title">Add a skip method for an app</string>
+    <string name="pref_add_method_summary">Manually add a skip button or skip area for an app</string>
+    <string name="pref_manage_widgets_title">Manage apps with added buttons</string>
+    <string name="pref_manage_widgets_summary">Keep or remove apps with added skip buttons</string>
+    <string name="pref_manage_dialog_title">Check the apps to keep</string>
+    <string name="pref_import_export_title">Import/export button-skip rules</string>
+    <string name="pref_import_export_summary">Edit rules manually</string>
+    <string name="pref_manage_positions_title">Manage apps with added areas</string>
+    <string name="pref_manage_positions_summary">Keep or remove apps with added skip areas</string>
+    <string name="pref_advanced_help_title">Advanced settings help</string>
+    <string name="pref_advanced_help_summary">Tap to view instructions</string>
+
+    <!-- In-app customization overlay (layout_activity_customization.xml, TouchHelperServiceImpl) -->
+    <string name="custom_package_label">Package:</string>
+    <string name="custom_package_hint">Shows the current app\'s package name</string>
+    <string name="custom_activity_label">Activity:</string>
+    <string name="custom_activity_hint">Shows the current page\'s activity name</string>
+    <string name="custom_widget_label">Widget:</string>
+    <string name="custom_widget_hint">Shows widget info</string>
+    <string name="custom_position_label">Position:</string>
+    <string name="custom_position_hint">Shows position info</string>
+    <string name="custom_show_layout">Show layout</string>
+    <string name="custom_hide_layout">Hide layout</string>
+    <string name="custom_add_widget">Add widget</string>
+    <string name="custom_show_target">Show crosshair</string>
+    <string name="custom_hide_target">Hide crosshair</string>
+    <string name="custom_add_position">Add position</string>
+    <string name="custom_dump_screen">Inspect window</string>
+    <string name="custom_quit">Exit</string>
+    <string name="custom_position_info">X: %1$d    Y: %2$d    (other parameters use defaults)</string>
+    <string name="custom_widget_saved_suffix">" (widget data saved)"</string>
+    <string name="custom_position_saved_suffix">" (position data saved)"</string>
+
+    <!-- Rule editor dialog (layout_manage_package_widgets.xml) -->
+    <string name="manage_rules_caption">Edit the button-skip rules for apps:</string>
+    <string name="manage_reset">Reset rules</string>
+    <string name="manage_copy">Copy rules</string>
+    <string name="manage_paste">Paste rules</string>
+    <string name="manage_cancel">Discard changes</string>
+    <string name="manage_online_rules">Online rules</string>
+    <string name="manage_confirm">Confirm changes</string>
+
+    <!-- Package picker dialog (layout_select_packages.xml) -->
+    <string name="select_cancel">Cancel</string>
+    <string name="select_confirm">Confirm</string>
+
+    <!-- Toasts -->
+    <string name="toast_skipping_by_position">Skipping ad by position...</string>
+    <string name="toast_skipping_by_keyword">Skipping ad by keyword...</string>
+    <string name="toast_skipping_by_widget">Skipping ad by widget...</string>
+    <string name="toast_window_copied">Window widgets copied to clipboard!</string>
+    <string name="toast_rules_copied">Rules copied to clipboard!</string>
+    <string name="toast_rules_pasted">Rules loaded from clipboard!</string>
+    <string name="toast_rules_not_found">No rules found in clipboard!</string>
+    <string name="toast_edit_cancelled">Changes discarded</string>
+    <string name="toast_rules_saved">Rules saved!</string>
+    <string name="toast_rules_invalid">Rules are invalid, please fix them and save again!</string>
+    <string name="toast_service_not_running">AdSkip service is not running, please enable the Accessibility Service!</string>
+</resources>

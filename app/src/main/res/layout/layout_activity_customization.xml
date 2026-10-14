@@ -22,13 +22,13 @@
             android:layout_marginBottom="2dp">
 
             <TextView
-                android:text="包名："
+                android:text="@string/custom_package_label"
                 android:textColor="@color/textColor"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_package_name"
-                android:hint="显示当前应用的包名"
+                android:hint="@string/custom_package_hint"
                 android:singleLine="true"
                 android:textColor="@color/textColor"
                 android:textSize="12sp" />
@@ -39,13 +39,13 @@
             android:layout_marginBottom="2dp">
 
             <TextView
-                android:text="活动："
+                android:text="@string/custom_activity_label"
                 android:textColor="@color/textColor"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_activity_name"
-                android:hint="显示当前页面的活动名"
+                android:hint="@string/custom_activity_hint"
                 android:singleLine="true"
                 android:textColor="@color/textColor"
                 android:textSize="12sp" />
@@ -56,14 +56,14 @@
             android:layout_marginBottom="2dp">
 
             <TextView
-                android:text="控件："
+                android:text="@string/custom_widget_label"
                 android:textColor="@color/textColor"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_widget_info"
                 android:layout_span="2"
-                android:hint="显示控件信息"
+                android:hint="@string/custom_widget_hint"
                 android:singleLine="true"
                 android:textColor="@color/textColor"
                 android:textSize="12sp" />
@@ -74,14 +74,14 @@
             android:layout_marginBottom="2dp">
 
             <TextView
-                android:text="坐标："
+                android:text="@string/custom_position_label"
                 android:textColor="@color/textColor"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_position_info"
                 android:layout_span="2"
-                android:hint="显示坐标信息"
+                android:hint="@string/custom_position_hint"
                 android:singleLine="true"
                 android:textColor="@color/textColor"
                 android:textSize="12sp" />
@@ -100,7 +100,7 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:padding="0dp"
-            android:text="显示布局"
+            android:text="@string/custom_show_layout"
             android:textColor="@color/textColor"
             android:textSize="10sp" />
 
@@ -112,7 +112,7 @@
             android:layout_weight="1"
             android:enabled="false"
             android:padding="0dp"
-            android:text="添加控件"
+            android:text="@string/custom_add_widget"
             android:textColor="@color/textColor"
             android:textSize="10sp" />
 
@@ -123,7 +123,7 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:padding="0dp"
-            android:text="显示准心"
+            android:text="@string/custom_show_target"
             android:textColor="@color/textColor"
             android:textSize="10sp" />
 
@@ -135,7 +135,7 @@
             android:layout_weight="1"
             android:enabled="false"
             android:padding="0dp"
-            android:text="添加坐标"
+            android:text="@string/custom_add_position"
             android:textColor="@color/textColor"
             android:textSize="10sp" />
 
@@ -146,7 +146,7 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:padding="0dp"
-            android:text="检查窗口"
+            android:text="@string/custom_dump_screen"
             android:textColor="@color/textColor"
             android:textSize="10sp" />
 
@@ -157,7 +157,7 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:padding="0dp"
-            android:text="退出"
+            android:text="@string/custom_quit"
             android:textColor="@color/textColor"
             android:textSize="10sp" />
 
