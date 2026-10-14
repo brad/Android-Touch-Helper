@@ -15,6 +15,7 @@ import com.zfdang.TouchHelperApp;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -64,7 +65,9 @@ public class Settings {
         }
 
         // init key words
-        String json = mPreference.getString(KEY_WORDS_LIST, "[\"跳过\"]");
+        // Fresh installs match both Chinese ("跳过") and English ("Skip") skip buttons:
+        // ads are shown in the app's language, not the system language.
+        String json = mPreference.getString(KEY_WORDS_LIST, "[\"跳过\", \"Skip\"]");
         List<String> stored = null;
         if(json != null) {
             try {
@@ -74,7 +77,7 @@ public class Settings {
                 Log.d(TAG, Utilities.getTraceStackInString(e));
             }
         }
-        listKeyWords = stored == null ? Collections.singletonList("跳过") : SkipAdRules.parseKeywords(String.join(" ", stored));
+        listKeyWords = stored == null ? Arrays.asList("跳过", "Skip") : SkipAdRules.parseKeywords(String.join(" ", stored));
 
         // load activity widgets
         json = mPreference.getString(PACKAGE_WIDGETS, null);
