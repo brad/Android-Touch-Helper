@@ -55,7 +55,11 @@ public class TouchHelperServiceImpl {
 
     private static final String TAG = "TouchHelperServiceImpl";
     // this application, quite frequently this app will be clicked un-expectedly
-    private static final String SelfPackageName = "开屏跳过";
+    // The label to exclude is the localized app name: on an English device the app's own
+    // window shows "AdSkip", so a hardcoded Chinese name would not exclude it.
+    private String getSelfLabel() {
+        return service.getString(R.string.app_name);
+    }
     private final AccessibilityService service;
 
     private Settings mSetting;
@@ -446,7 +450,7 @@ public class TouchHelperServiceImpl {
 
                         final PackagePositionDescription packagePositionDescription = mapPackagePositions.get(currentPackageName);
                         if (packagePositionDescription != null) {
-                            ShowToastInIntentService("正在根据位置跳过广告...");
+                            ShowToastInIntentService(service.getString(R.string.toast_skipping_by_position));
 
                             // try to click the position in the activity for multiple times
                             final Future<?>[] futures = {null};
@@ -815,7 +819,7 @@ public class TouchHelperServiceImpl {
         String keyword = SkipAdRules.findKeyword(
                 text == null ? null : text.toString(),
                 description == null ? null : description.toString(),
-                keywords, SelfPackageName);
+                keywords, getSelfLabel());
         if (keyword == null) {
             return false;
         }
@@ -834,11 +838,11 @@ public class TouchHelperServiceImpl {
         }
         Rect bounds = new Rect();
         node.getBoundsInScreen(bounds);
-        clickNode(node, bounds, false, "正在根据关键字跳过广告...", session, refreshed -> {
+        clickNode(node, bounds, false, service.getString(R.string.toast_skipping_by_keyword), session, refreshed -> {
             CharSequence text = refreshed.getText();
             CharSequence description = refreshed.getContentDescription();
             return SkipAdRules.findKeyword(text == null ? null : text.toString(),
-                    description == null ? null : description.toString(), keywords, SelfPackageName) != null;
+                    description == null ? null : description.toString(), keywords, getSelfLabel()) != null;
         });
     }
 
@@ -1002,7 +1006,7 @@ public class TouchHelperServiceImpl {
             Log.d(TAG, "Find skip-ad by Widget " + e.toString());
         }
         final PackageWidgetDescription rule = e;
-        ClickResult result = clickNode(node, bounds, e.onlyClick, "正在根据控件跳过广告...", session, refreshed -> {
+        ClickResult result = clickNode(node, bounds, e.onlyClick, service.getString(R.string.toast_skipping_by_widget), session, refreshed -> {
             Rect r = new Rect();
             refreshed.getBoundsInScreen(r);
             CharSequence id = refreshed.getViewIdResourceName();
@@ -1346,7 +1350,7 @@ public class TouchHelperServiceImpl {
                         positionDescription.y = targetParams.y + height;
                         tvPackageName.setText(positionDescription.packageName);
                         tvActivityName.setText(positionDescription.activityName);
-                        tvPositionInfo.setText("X轴：" + positionDescription.x + "    " + "Y轴：" + positionDescription.y + "    " + "(其他参数默认)");
+                        tvPositionInfo.setText(service.getString(R.string.custom_position_info, positionDescription.x, positionDescription.y));
                         break;
                     case MotionEvent.ACTION_UP:
                         targetParams.alpha = 0.5f;
@@ -1426,13 +1430,13 @@ public class TouchHelperServiceImpl {
                     windowManager.updateViewLayout(viewTarget, outlineParams);
                     tvPackageName.setText(widgetDescription.packageName);
                     tvActivityName.setText(widgetDescription.activityName);
-                    button.setText("隐藏布局");
+                    button.setText(service.getString(R.string.custom_hide_layout));
                 } else {
                     outlineParams.alpha = 0f;
                     outlineParams.flags = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
                     windowManager.updateViewLayout(viewTarget, outlineParams);
                     btAddWidget.setEnabled(false);
-                    button.setText("显示布局");
+                    button.setText(service.getString(R.string.custom_show_layout));
                 }
             }
         });
@@ -1448,13 +1452,13 @@ public class TouchHelperServiceImpl {
                     windowManager.updateViewLayout(imageTarget, targetParams);
                     tvPackageName.setText(positionDescription.packageName);
                     tvActivityName.setText(positionDescription.activityName);
-                    button.setText("隐藏准心");
+                    button.setText(service.getString(R.string.custom_hide_target));
                 } else {
                     targetParams.alpha = 0f;
                     targetParams.flags = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
                     windowManager.updateViewLayout(imageTarget, targetParams);
                     btAddPosition.setEnabled(false);
-                    button.setText("显示准心");
+                    button.setText(service.getString(R.string.custom_show_target));
                 }
             }
         });
@@ -1470,7 +1474,7 @@ public class TouchHelperServiceImpl {
                 }
                 set.add(temWidget);
                 btAddWidget.setEnabled(false);
-                tvPackageName.setText(widgetDescription.packageName + " (以下控件数据已保存)");
+                tvPackageName.setText(widgetDescription.packageName + service.getString(R.string.custom_widget_saved_suffix));
                 // save, then refresh our immutable snapshot
                 Settings.getInstance().setPackageWidgets(saved);
                 refreshCustomizedRules();
@@ -1482,7 +1486,7 @@ public class TouchHelperServiceImpl {
                 Map<String, PackagePositionDescription> saved = Settings.getInstance().getPackagePositions();
                 saved.put(positionDescription.packageName, new PackagePositionDescription(positionDescription));
                 btAddPosition.setEnabled(false);
-                tvPackageName.setText(positionDescription.packageName + " (以下坐标数据已保存)");
+                tvPackageName.setText(positionDescription.packageName + service.getString(R.string.custom_position_saved_suffix));
                 // save, then refresh our immutable snapshot
                 Settings.getInstance().setPackagePositions(saved);
                 refreshCustomizedRules();
@@ -1501,7 +1505,7 @@ public class TouchHelperServiceImpl {
                 ClipData clip = ClipData.newPlainText("ACTIVITY", result);
                 clipboard.setPrimaryClip(clip);
 
-                ShowToastInIntentService("窗口控件已复制到剪贴板！");
+                ShowToastInIntentService(service.getString(R.string.toast_window_copied));
             }
         });
         btQuit.setOnClickListener(new View.OnClickListener() {
